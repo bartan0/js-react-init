@@ -1,0 +1,26 @@
+{
+	"name": "brave-new-project",
+	"version": "0.0.0",
+	"scripts": {
+		"build": "webpack",
+		"build-watch": "webpack --watch",
+		"nginx-start": "./nginx/main start",
+		"nginx-stop": "./nginx/main stop"
+	},
+	"dependencies": {
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
+		"@babel/preset-react": "^7.0.0",
+		"babel-loader": "^8.0.6",
+		"css-loader": "^3.2.0",
+		"extract-loader": "^3.1.0",
+		"file-loader": "^4.1.0",
+		"html-loader": "^0.5.5",
+		"webpack": "^4.39.1",
+		"webpack-cli": "^3.3.6"
+	}
+}

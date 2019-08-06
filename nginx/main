@@ -1,0 +1,38 @@
+#!/bin/bash
+
+DIR_BUILD='build'
+IMAGE_NAME='brave-new-project-nginx'
+PORT=8080
+
+
+function build {
+	docker build -t$IMAGE_NAME .
+}
+
+function run {
+	cd .. && \
+	mkdir -p $DIR_BUILD && \
+	docker run --rm -dit --name $IMAGE_NAME \
+		-v$(realpath $DIR_BUILD):/var/www:ro \
+		-p$PORT:80 \
+		$IMAGE_NAME
+}
+
+function stop {
+	docker kill $IMAGE_NAME
+}
+
+
+ARGV0=$0
+CMD=$1
+
+cd $(dirname $ARGV0)
+
+case $CMD in
+	(build) build;;
+	(run) run;;
+	(start) build; run;;
+	(stop) stop;;
+
+	(*) echo "$ARGV0: $CMD: unrecognized command"
+esac
